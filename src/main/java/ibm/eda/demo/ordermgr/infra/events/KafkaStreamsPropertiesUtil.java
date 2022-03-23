@@ -1,4 +1,4 @@
-package ibm.gse.eda.order.demo.infra.events;
+package ibm.eda.demo.ordermgr.infra.events;
 
 import java.util.Optional;
 import java.util.Properties;

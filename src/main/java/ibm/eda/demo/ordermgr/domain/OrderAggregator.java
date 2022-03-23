@@ -1,4 +1,4 @@
-package ibm.gse.eda.order.demo.domain;
+package ibm.eda.demo.ordermgr.domain;
 
 import java.util.logging.Logger;
 
@@ -12,6 +12,7 @@ import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.KStream;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import io.apicurio.registry.serde.avro.AvroSerde;
 import io.cloudevents.CloudEvent;
 
 @Singleton
@@ -32,8 +33,10 @@ public class OrderAggregator {
     @Produces
     public Topology buildProcessFlow(){
         final StreamsBuilder builder = new StreamsBuilder();
+        AvroSerde<CloudEvent> serde = new io.apicurio.registry.serde.avro.AvroSerde<CloudEvent>();
+        
         KStream<String,CloudEvent> orders = builder.stream(orderInputStreamName, 
-        Consumed.with(Serdes.String(),  new io.apicurio.registry.serde.avro.AvroSerde<CloudEvent>())); 
+            Consumed.with(Serdes.String(), serde )); 
         orders.peek( (k,v) -> System.out.println(v));
         return builder.build();
     }

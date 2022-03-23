@@ -1,4 +1,4 @@
-package ibm.gse.eda.order.demo.infra.events;
+package ibm.eda.demo.ordermgr.infra.events;
 
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
@@ -12,7 +12,7 @@ import javax.inject.Singleton;
 import org.apache.kafka.streams.KafkaStreams;
 import org.jboss.logging.Logger;
 
-import ibm.gse.eda.order.demo.domain.OrderAggregator;
+import ibm.eda.demo.ordermgr.domain.OrderAggregator;
 import io.quarkus.arc.Unremovable;
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.Startup;
@@ -70,7 +70,7 @@ public class OrderProcessingAgent {
         Properties props = kafkaStreamConfig.getStreamsProperties();
         kafkaStreams = new KafkaStreams(aggregator.buildProcessFlow(), props);
        
-    executorService.execute(new Runnable() {
+        executorService.execute(new Runnable() {
 
         @Override
         public void run() {

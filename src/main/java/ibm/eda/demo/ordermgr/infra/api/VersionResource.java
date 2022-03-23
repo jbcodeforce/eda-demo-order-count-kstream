@@ -1,4 +1,4 @@
-package ibm.gse.eda.order.demo.infra.api;
+package ibm.eda.demo.ordermgr.infra.api;
 
 import java.util.logging.Logger;
 

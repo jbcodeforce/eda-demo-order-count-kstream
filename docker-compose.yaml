@@ -73,6 +73,7 @@ services:
       MP_MESSAGING_CONNECTOR_SMALLRYE_KAFKA_SECURITY_PROTOCOL: PLAINTEXT
       KAFKA_TOPIC_NAME: orders
       KAFKA_SSL_TRUSTSTORE_PASSWORD: ""
+      JAAS_CFG: ""
       ES_APICURIO_URL: "http://apicurio:8080/apis/registry/v2"
     depends_on:
       - kafka
