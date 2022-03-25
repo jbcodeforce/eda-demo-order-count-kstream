@@ -11,7 +11,12 @@ public class OrderMetric {
         this.count = count;
     }
 
-    public void updateCount(long n) {
+    public OrderMetric updateCount(long n) {
         count = count + n;
+        return this;
+    }
+
+    public String toString() {
+        return orderState + " -> " + count;
     }
 }
